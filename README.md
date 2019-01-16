@@ -10,6 +10,6 @@ All the libraries and tools that we used to complete the project are included in
 "Report.pdf" file contains the final report of our project.
 
 Members:
-Caruso Emanuele
-Cicero Edoardo
-Giunta Daniele
+Caruso Emanuele,
+Cicero Edoardo,
+Giunta Daniele.
