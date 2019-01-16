@@ -107,7 +107,7 @@
 	webGLRenderer.domElement.style.width = webGLRenderer.domElement.width * res_scale + 'px';
 	webGLRenderer.domElement.style.height = webGLRenderer.domElement.height * res_scale + 'px';
 
-	webGLRenderer.shadowMap.enabled = true;
+	webGLRenderer.shadowMap.enabled = false;
 	//webGLRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
 	
 	document.body.appendChild( webGLRenderer.domElement );
@@ -141,7 +141,7 @@ function loop(){
 	requestAnimationFrame(loop);
 	
 	res_scale = options.Res_Down;
-	var BasicShadowMap = options.BasicShadowMap;
+	//var BasicShadowMap = options.BasicShadowMap;
 
 	// DownScale
 	camera.aspect = window.innerWidth / window.innerHeight;
