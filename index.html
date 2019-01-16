@@ -119,8 +119,6 @@
 
 var options = {
   Res_Down: res_scale,
-  shadows: false,
-  BasicShadowMap: true,
   };
 
 
@@ -140,18 +138,13 @@ function loop(){
 	requestAnimationFrame(loop);
 	
 	res_scale = options.Res_Down;
-	var BasicShadowMap = options.BasicShadowMap;
-
+	
 	// DownScale
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
 	webGLRenderer.setSize( window.innerWidth/res_scale, window.innerHeight/res_scale );
 	webGLRenderer.domElement.style.width = webGLRenderer.domElement.width * res_scale + 'px';
 	webGLRenderer.domElement.style.height = webGLRenderer.domElement.height * res_scale + 'px';
-
-	
-	if (BasicShadowMap) webGLRenderer.shadowMap.type = THREE.BasicShadowMap;
-		else webGLRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
 	
 	// H per il debug
 	if(keyboard.pressed("H")) {console.log(webGLRenderer); console.log(webGLRenderer.info.memory);	console.log(webGLRenderer.info.render); webGL_Gui.open(); console.log(intersects); }   
