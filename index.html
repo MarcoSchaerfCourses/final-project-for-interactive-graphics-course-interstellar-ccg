@@ -107,8 +107,8 @@
 	webGLRenderer.domElement.style.width = webGLRenderer.domElement.width * res_scale + 'px';
 	webGLRenderer.domElement.style.height = webGLRenderer.domElement.height * res_scale + 'px';
 
-	webGLRenderer.shadowMap.enabled = false;
-	//webGLRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
+	webGLRenderer.shadowMap.enabled = true;
+	webGLRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
 	
 	document.body.appendChild( webGLRenderer.domElement );
 	console.log(webGLRenderer);
