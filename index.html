@@ -108,7 +108,7 @@
 	webGLRenderer.domElement.style.height = webGLRenderer.domElement.height * res_scale + 'px';
 
 	webGLRenderer.shadowMap.enabled = true;
-	webGLRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
+	//webGLRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
 	
 	document.body.appendChild( webGLRenderer.domElement );
 	console.log(webGLRenderer);
@@ -119,8 +119,8 @@
 
 var options = {
   Res_Down: res_scale,
-  shadows: true,
-  BasicShadowMap: false,
+  /*shadows: true,
+  BasicShadowMap: false,*/
   };
 
 
@@ -129,8 +129,8 @@ var gui = new dat.GUI();
 var webGL_Gui = gui.addFolder('Renderer');
 
 webGL_Gui.add(options, 'Res_Down', 1, 3).listen();
-webGL_Gui.add(webGLRenderer.shadowMap, 'enabled').name('shadows').listen();
-webGL_Gui.add(options, 'BasicShadowMap').listen();
+/*webGL_Gui.add(webGLRenderer.shadowMap, 'enabled').name('shadows').listen();
+webGL_Gui.add(options, 'BasicShadowMap').listen();*/
 //webGL_Gui.open();
 
 
@@ -151,8 +151,8 @@ function loop(){
 	webGLRenderer.domElement.style.height = webGLRenderer.domElement.height * res_scale + 'px';
 
 	
-	if (BasicShadowMap) webGLRenderer.shadowMap.type = THREE.BasicShadowMap;
-		else webGLRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
+	/*if (BasicShadowMap) webGLRenderer.shadowMap.type = THREE.BasicShadowMap;
+		else webGLRenderer.shadowMap.type = THREE.PCFSoftShadowMap;*/
 	
 	// H per il debug
 	if(keyboard.pressed("H")) {console.log(webGLRenderer); console.log(webGLRenderer.info.memory);	console.log(webGLRenderer.info.render); webGL_Gui.open(); console.log(intersects); }   
