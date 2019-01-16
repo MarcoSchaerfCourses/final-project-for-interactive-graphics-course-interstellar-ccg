@@ -119,8 +119,8 @@
 
 var options = {
   Res_Down: res_scale,
-  shadows: true,
-  BasicShadowMap: false,
+  shadows: false,
+  BasicShadowMap: true,
   };
 
 
@@ -129,8 +129,7 @@ var gui = new dat.GUI();
 var webGL_Gui = gui.addFolder('Renderer');
 
 webGL_Gui.add(options, 'Res_Down', 1, 3).listen();
-webGL_Gui.add(webGLRenderer.shadowMap, 'enabled').name('shadows').listen();
-webGL_Gui.add(options, 'BasicShadowMap').listen();
+
 //webGL_Gui.open();
 
 
