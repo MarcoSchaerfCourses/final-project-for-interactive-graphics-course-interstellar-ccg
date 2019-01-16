@@ -1,17 +1,3 @@
-
-//TERZA PROVA
-/*
-var scene = new THREE.Scene();
-scene.background = new THREE.Color( 0xf0f0f0  );
-var camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
-
-var webGLRenderer = new THREE.WebGLwebGLRenderer();
-webGLRenderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( webGLRenderer.domElement );
-
-camera.position.z = 170;
-*/
-
 var maze = new THREE.Object3D();
 var idAnimMaze;
 
@@ -104,15 +90,6 @@ yCircleCoordsToReset.push(YprawnCircleUnlock);
 
 
 function init() {
-	//scene.add( new THREE.AmbientLight( 0xFFFFFF  ) ); //white
-
-	//var light = new THREE.SpotLight( 0xffffff, 1.5 );
-	//light.position.set( 0, 500, 2000 );
-
-	//scene.add(light);
-
-	
-	
 	
 	var geometry = new THREE.PlaneGeometry( 20 *mazeScale, 20 *mazeScale ); //simple 2D square
 	//var geometry = new THREE.SphereGeometry( 40, 40, 40 );
@@ -124,16 +101,10 @@ function init() {
 
 
 	square.position.x = -100 *mazeScale
-	//console.log(square.position.x);
 	square.position.y = 100 *mazeScale;
-	//console.log(square.position.y);
-	//square.position.z = 10;
-	//console.log(square.position.z);
 
 	square.castShadow = true;
 	square.receiveShadow = true;
-
-	//scene.add( square );
 
 	mazeObjects.push( square );
 
@@ -145,18 +116,10 @@ function init() {
 	var mazeBackground = new THREE.Mesh(squareBack, new THREE.MeshBasicMaterial( { color: 0xffffff})); //riga verticale a sinistra
 	mazeBackground.name = "mazeBackground";
 	mazeBackground.position.x=-15*mazeScale;
-	//console.log(mazeBackground.position.x);
 	mazeBackground.position.y=14*mazeScale;
 	mazeBackground.position.z=-0.02;
-	//mazeBackground.position.z=10;
 	mazeObjects.push(mazeBackground);
-	//scene.add(line1);
-
-
-	//mazeObjects[1].position.x = mazeObjects[0].position.x+44;
-	//console.log(mazeObjects[1].position.x);
-
-	//console.log(mazeObjects[0].position.x);
+	
 
 	/*GRID*/
 	var rect = new THREE.PlaneGeometry(2 *mazeScale,200 *mazeScale);
@@ -164,12 +127,8 @@ function init() {
 	var line1 = new THREE.Mesh(rect, new THREE.MeshBasicMaterial( {color: 0x000000})); //riga verticale a sinistra
 	line1.name = "line1";
 	line1.position.x=mazeObjects[0].position.x-14 *mazeScale;
-	//console.log(line1.position.x);
 	line1.position.y=mazeObjects[0].position.y-86 *mazeScale;
-	//line1.position.z=10;
 	mazeObjects.push(line1);
-	//scene.add(line1);
-
 
 
 	var rect3 = new THREE.PlaneGeometry(200 *mazeScale,2 *mazeScale);
@@ -177,40 +136,22 @@ function init() {
 	var line2 = new THREE.Mesh(rect3, new THREE.MeshBasicMaterial( {color: 0x000000})); //riga orizziontale in basso
 	line2.name = "line2";
 	line2.position.x=line1.position.x+99 *mazeScale;
-	//console.log(line2.position.x);
 	line2.position.y=line1.position.y-100 *mazeScale;
-	//line2.position.z=10;
 	mazeObjects.push(line2);
-	//scene.add(line2);
 
-
-
-	//var rect3 = new THREE.BoxGeometry(200,2);
-
+	
 	var line3 = new THREE.Mesh(rect3, new THREE.MeshBasicMaterial( {color: 0x000000})); //riga orizzontale in alto
 	line3.name = "line3";
 	line3.position.x=line1.position.x+99 *mazeScale;
-	//console.log(line3.position.x);
 	line3.position.y=line1.position.y+99 *mazeScale;
-	//line3.position.z=10;
 	mazeObjects.push(line3);
-	//scene.add(line3);
 
-
-
-	//var rect4 = new THREE.BoxGeometry(2,200);
 
 	var line4 = new THREE.Mesh(rect, new THREE.MeshBasicMaterial( {color: 0x000000})); //riga verticale a destra
 	line4.name = "line4";
 	line4.position.x=line1.position.x+99*2 *mazeScale;
-	//console.log(line4.position.x);
 	line4.position.y=line1.position.y;
-	//line4.position.z=10;
 	mazeObjects.push(line4);
-	//scene.add(line4);
-
-
-
 
 
 
@@ -220,12 +161,9 @@ function init() {
 	var line5 = new THREE.Mesh(verticalLine1, new THREE.MeshBasicMaterial( {color: 0x000000})); //muretto in alto a sx iniziale
 	line5.name = "line5";
 	line5.position.x=line1.position.x+28 *mazeScale;
-	//console.log(line4.position.x);
 	line5.position.y=line1.position.y+55 *mazeScale;
-	//line5.position.z=10;
 	mazeObjects.push(line5);
-	//scene.add(line5);
-
+	
 
 	var horizontalLine1 = new THREE.PlaneGeometry(30 *mazeScale,2 *mazeScale);
 
@@ -234,24 +172,18 @@ function init() {
 	line6.position.x = line5.position.x+15 *mazeScale;
 	line6.position.y = line5.position.y+15 *mazeScale;
 	mazeObjects.push(line6);
-	//scene.add(line6);
 
 	var line7 = new THREE.Mesh(horizontalLine1, new THREE.MeshBasicMaterial( {color: 0x000000}));
 	line7.name = "line7";
 	line7.position.x = line6.position.x;
 	line7.position.y = line6.position.y-30 *mazeScale;
 	mazeObjects.push(line7);
-	//scene.add(line7);
-
 
 	var line8 = new THREE.Mesh(verticalLine1, new THREE.MeshBasicMaterial( {color: 0x000000})); //muretto in alto a sx iniziale
 	line8.name = "line8";
 	line8.position.x=line7.position.x+15 *mazeScale;
-	//console.log(line4.position.x);
 	line8.position.y=line7.position.y-44 *mazeScale;
-	//line5.position.z=10;
 	mazeObjects.push(line8);
-	//scene.add(line8);
 
 
 	var verticalLine2 = new THREE.PlaneGeometry(2 *mazeScale,80 *mazeScale);
@@ -259,11 +191,8 @@ function init() {
 	var line9 = new THREE.Mesh(verticalLine2, new THREE.MeshBasicMaterial( {color: 0x000000})); //muretto in alto a sx iniziale
 	line9.name = "line9";
 	line9.position.x=line1.position.x+28 *mazeScale;
-	//console.log(line4.position.x);
 	line9.position.y=line1.position.y-60 *mazeScale;
-	//line5.position.z=10;
 	mazeObjects.push(line9);
-	//scene.add(line9);
 
 
 	var verticalLine3 = new THREE.PlaneGeometry(2 *mazeScale,25 *mazeScale);
@@ -271,21 +200,15 @@ function init() {
 	var line10 = new THREE.Mesh(verticalLine3, new THREE.MeshBasicMaterial( {color: 0x000000})); //muretto in alto a sx iniziale
 	line10.name = "line10";
 	line10.position.x=line8.position.x+1 *mazeScale;
-	//console.log(line4.position.x);
 	line10.position.y=line1.position.y-88 *mazeScale;
-	//line5.position.z=10;
 	mazeObjects.push(line10);
-	//scene.add(line10);
 
 
 	var line11 = new THREE.Mesh(verticalLine1, new THREE.MeshBasicMaterial( {color: 0x000000})); //muretto in alto a sx iniziale
 	line11.name = "line11";
 	line11.position.x=line7.position.x+44 *mazeScale
-	//console.log(line4.position.x);
 	line11.position.y=line1.position.y+55 *mazeScale;
-	//line5.position.z=10;
 	mazeObjects.push(line11);
-	//scene.add(line11);
 
 
 	var horizontalLine2 = new THREE.PlaneGeometry(20 *mazeScale,2 *mazeScale);
@@ -295,27 +218,20 @@ function init() {
 	var line12 = new THREE.Mesh(horizontalLine6, new THREE.MeshBasicMaterial( {color: 0x000000})); //muretto in basso a dx finale
 	line12.name = "line12";
 	line12.position.x=line7.position.x+31 *mazeScale;
-	//console.log(line6.position.x);
 	line12.position.y=line10.position.y+12 *mazeScale;
-	//line6.position.z=10;
 	mazeObjects.push(line12);
-	//scene.add(line12);
 
 
 	var line13 = new THREE.Mesh(horizontalLine1, new THREE.MeshBasicMaterial( {color: 0x000000})); //muretto in basso a dx finale
 	line13.name = "line13";
 	line13.position.x=line7.position.x+30 *mazeScale;
-	//console.log(line6.position.x);
 	line13.position.y=line10.position.y+40 *mazeScale;
-	//line6.position.z=10;
 	mazeObjects.push(line13);
 
 	var line14 = new THREE.Mesh(verticalLine3, new THREE.MeshBasicMaterial( {color: 0x000000}));
 	line14.name = "line14";
 	line14.position.x=line11.position.x;
-	//console.log(line4.position.x);
 	line14.position.y=line13.position.y+12 *mazeScale;
-	//line5.position.z=10;
 	mazeObjects.push(line14);
 
 
@@ -437,58 +353,6 @@ function init() {
 	mazeObjectsThatChanges.push(line30);
 
 
-/*
-	var line31 = new THREE.Mesh(verticalLine4, new THREE.MeshBasicMaterial( {color: 0x000000})); //purple opened door
-	line31.name = "line31";
-	line31.position.x = line15.position.x-54;
-	line31.position.y = line15.position.y+63;
-	mazeObjects.push(line31);
-	//scene.add(line31);
-	//line31.visible = false; //hide the purple opened door (make it visible later)*/
-
-	/*
-	line31.traverse(function ( object ) { 
-		object.visible = false; } );
-	*/
-
-/*
-	var line32 = new THREE.Mesh(verticalLine4, new THREE.MeshBasicMaterial( {color: 0x000000})); //yellow opened door
-	line32.name = "line32";
-	line32.position.x = line16.position.x+43;
-	line32.position.y = line16.position.y-48;
-	mazeObjects.push(line32);
-	//scene.add(line32);
-	//line32.visible=false; //hide the yellow opened door (make it visible later)*/
-
-	/*
-	line32.traverse(function(object) { 
-		object.visible=false;
-	});
-	*/
-
-/*
-	var line33 = new THREE.Mesh(horizontalLine1, new THREE.MeshBasicMaterial( {color: 0x000000})); //green opened door
-	line33.name = "line33";
-	line33.position.x=line27.position.x-74;
-	line33.position.y=line27.position.y+38;
-	mazeObjects.push(line33);*/
-	//scene.add(line33);
-
-	//line33.visible=false; //hide the green opened door (make it visible later)
-
-	/*
-	line33.traverse(function(object) { 
-		object.visible=false;
-	});
-	*/
-/*
-	var line34 = new THREE.Mesh(verticalLine3, new THREE.MeshBasicMaterial( {color: 0x000000})); //orange opened door
-	line34.name = "line34";
-	line34.position.x=line27.position.x-58;
-	line34.position.y=line27.position.y;
-	mazeObjects.push(line34);*/
-	//scene.add(line34);
-
 	var horizontalLine5 = new THREE.PlaneGeometry(26 *mazeScale,2 *mazeScale);
 
 	var line35 = new THREE.Mesh(horizontalLine5, new THREE.MeshBasicMaterial( {color: 0x000000})); //orange door
@@ -499,9 +363,6 @@ function init() {
 	mazeObjects.push(line35);
 
 	mazeObjectsThatChanges.push(line35);
-
-
-
 
 
 	var circle = new THREE.CircleGeometry( 5 *mazeScale,40 );
@@ -579,38 +440,6 @@ function init() {
 
 	circlesToReset.push(circleUnlock6);
 
-	/*for(var i=0; i<mazeObjects.length; i++) {
-		console.log(mazeObjects[i].name);
-	}
-
-	console.log("----");
-
-	for(var i=0; i<mazeObjectsThatChanges.length; i++) {
-		console.log(mazeObjectsThatChanges[i].name);
-	}
-
-	console.log("----");
-
-	for(var i=0; i<circlesToReset.length; i++) {
-		console.log(circlesToReset[i].name);
-	}
-
-	console.log("----");
-
-	for(var i=0; i<mazeObjects.length; i++) {
-		console.log(mazeObjects[i].name);
-		console.log(mazeObjects[i].position.x);
-		console.log(mazeObjects[i].position.y);
-	}
-	console.log("----");*/
-
-
-
-	//console.log(scene.getObjectByName("line"+2+"").name);
-	/*for( i=1; i <= 33; i++) { //i=0 non preso perchè in mazeObjects[0] c'è square, in mazeObjects[1],....,mazeObjects[33] ci sono solo le linee
-		console.log((mazeObjects[i].name));//scene.getObjectByName("line"+i+"")));
-	}*/
-
 for(var i=0; i<mazeObjects.length; i++)
 	maze.add(mazeObjects[i])
 	
@@ -621,37 +450,15 @@ console.log(mazeObjects);
 }
 
 
-
-
-//document.addEventListener("keyup", onDocumentKeyUp);
-
-/*document.addEventListener("keyup", function(e){ //press spacebar to restart the game
-	if(collisionIsVerified(sqbb,mazeObjects)) {
-		if(e.keyCode == 32) {
-    		window.location.reload();
-		}
-	}
-})*/
-
 function moveSq() {
 	// movement
 	var xSpeed = 2 *mazeScale;
 	var ySpeed = 2 *mazeScale;
 
-	//event.preventDefault();
-
 	var sq = scene.getObjectByName("square");
-	/*var helper = new THREE.BoxHelper(sq, 0xff0000);
-	var helper2 = new THREE.BoxHelper(line1, 0xff0000);
-
-	helper.update();
-	helper2.update();
-	// If you want a visible bounding box
-	//scene.add(helper);
-	//scene.add(helper2);*/
 
 
-    if (keyboard.pressed("W")) { //up arrow
+    	if (keyboard.pressed("W")) { //up arrow
 
 		sq.position.y += ySpeed;
 		var sqbb = new THREE.Box3().setFromObject(scene.getObjectByName("square"));
@@ -691,23 +498,9 @@ function moveSq() {
 
     }
 	if (keyboard.pressed("space")) {
-			//window.location.reload();
 
 			resetPositions(mazeObjectsThatChanges,xCoordsToReset,yCoordsToReset);
 			resetCircles(circlesToReset, xCircleCoordsToReset, yCircleCoordsToReset);
-			/*for(var i=0; i<mazeObjects.length; i++) {
-				var temp = scene.getObjectByName(mazeObjects[i].name);
-				console.log(temp.name);
-				console.log(temp.position.x);
-				console.log(temp.position.y);
-			}*/
-			/*for(var i=0; i<mazeObjects.length; i++) {
-				scene.remove(mazeObjects[i]);
-			}*/
-			//scene.remove.apply(scene, scene.children);
-			//reset();
-			//init();
-			//animateMaze();
     }
 
 	unlockDoors();
@@ -753,11 +546,6 @@ function resetCircles(circlesToReset, xCircleCoordsToReset, yCircleCoordsToReset
 }
 
 
-/*function removeDoor(array, door) {
-    const index = array.indexOf(element);
-	array.splice(index, 1);
-}*/
-
 
 function unlockDoors() {
 
@@ -781,105 +569,71 @@ function unlockDoors() {
 
 	var goalCircle = scene.getObjectByName("circleGoal");
 
-	var l31 = mazeObjects[31];//scene.getObjectByName("line31"); //purple opened door
+	var l31 = mazeObjects[31]; //purple opened door
 
-	var l32 = mazeObjects[32];//scene.getObjectByName("line32"); //yellow opened door
+	var l32 = mazeObjects[32]; //yellow opened door
 
-	var l33 = mazeObjects[33];//scene.getObjectByName("line33"); //green opened door
+	var l33 = mazeObjects[33]; //green opened door
 
-	var l34 = mazeObjects[34];//scene.getObjectByName("line34"); //orange opened door
+	var l34 = mazeObjects[34]; //orange opened door
 
-	/*var porteDaAprire = [];
-	porteDaAprire.push(l30);
-	porteDaAprire.push(l29);
-	porteDaAprire.push(l28);
-	porteDaAprire.push(l35)*/
-
-
-	//var randDaAprire = porteDaAprire[Math.floor(Math.random() * porteDaAprire.length)];
 	
 	var door;
 
-
-	//if(pinkCircle.position.x <= sq.position.x+2 & pinkCircle.position.y == sq.position.y) {// & (square.position.x <= circleGoal.position.x)) {
-
-	if(pinkCircle.position.x<= (sq.position.x+5 *mazeScale) & (sq.position.x-5 *mazeScale)<= pinkCircle.position.x & pinkCircle.position.y <= (sq.position.y+5 *mazeScale) & (sq.position.y-5 *mazeScale) <= pinkCircle.position.y) {// & (square.position.x <= circleGoal.position.x)) {
-		//scene.remove(l29);
-		//scene.add(l32);
+	if(pinkCircle.position.x<= (sq.position.x+5 *mazeScale) & (sq.position.x-5 *mazeScale)<= pinkCircle.position.x & pinkCircle.position.y <= (sq.position.y+5 *mazeScale) & (sq.position.y-5 *mazeScale) <= pinkCircle.position.y) {
 		
 		door = scene.getObjectByName("line29");
 		door.rotation.z = -Math.PI/2;
 		door.translateX(16 *mazeScale);
 		door.translateY(14 *mazeScale);
 		
-
 		pinkCircle.position.x = pinkCircle.position.x-40 *mazeScale;
-
-		
-
-		
-
 		pinkCircle.visible=false;
 
-	} else if (purpleCircle.position.x<= (sq.position.x+5 *mazeScale) & (sq.position.x-5 *mazeScale)<= purpleCircle.position.x & purpleCircle.position.y <= (sq.position.y+5 *mazeScale) & (sq.position.y-5 *mazeScale) <= purpleCircle.position.y) {// & (square.position.x <= circleGoal.position.x)) {
-		//scene.remove(l35);
-		//scene.remove(l28);
-		//scene.add(l34);
+	} else if (purpleCircle.position.x<= (sq.position.x+5 *mazeScale) & (sq.position.x-5 *mazeScale)<= purpleCircle.position.x & purpleCircle.position.y <= (sq.position.y+5 *mazeScale) & (sq.position.y-5 *mazeScale) <= purpleCircle.position.y) {
 		door = scene.getObjectByName("line35");
 		door.rotation.z = -Math.PI/2;
 		door.translateX(12 *mazeScale);
 		door.translateY(13 *mazeScale);
 
 		purpleCircle.position.x = purpleCircle.position.x -80 *mazeScale;
-		//scene.remove(purpleCircle);
 		purpleCircle.visible=false;
 
-	} else if(yellowCircle.position.x<= (sq.position.x+5 *mazeScale) & (sq.position.x-5 *mazeScale)<= yellowCircle.position.x & yellowCircle.position.y <= (sq.position.y+5 *mazeScale) & (sq.position.y-5 *mazeScale) <= yellowCircle.position.y) {// & (square.position.x <= circleGoal.position.x)) {
-		//scene.remove(l30);
-		//scene.add(l31);
+	} else if(yellowCircle.position.x<= (sq.position.x+5 *mazeScale) & (sq.position.x-5 *mazeScale)<= yellowCircle.position.x & yellowCircle.position.y <= (sq.position.y+5 *mazeScale) & (sq.position.y-5 *mazeScale) <= yellowCircle.position.y) {
 		door = scene.getObjectByName("line30");
 		door.rotation.z = Math.PI/2;
 		door.translateX(-14 *mazeScale);
 		door.translateY(14 *mazeScale);
 
 		yellowCircle.position.x = yellowCircle.position.x +90 *mazeScale;
-		//scene.remove(yellowCircle);
 		yellowCircle.visible=false;
 	
 	} else if(orangeCircle.position.x<= (sq.position.x+5 *mazeScale) & (sq.position.x-5 *mazeScale)<= orangeCircle.position.x & orangeCircle.position.y <= (sq.position.y+5 *mazeScale) & (sq.position.y-5 *mazeScale) <= orangeCircle.position.y) {
-		//scene.remove(l28)
-		//scene.add(l33);
 		door = scene.getObjectByName("line28");
 		door.rotation.z = Math.PI/2;
 		door.translateX(13 *mazeScale);
 		door.translateY(13 *mazeScale);
 
 		orangeCircle.position.x = orangeCircle.position.x-90 *mazeScale
-		//scene.remove(orangeCircle);
 		orangeCircle.visible=false;
 	
 	} else if(brownCircle.position.x<= (sq.position.x+5 *mazeScale) & (sq.position.x-5 *mazeScale)<= brownCircle.position.x & brownCircle.position.y <= (sq.position.y+5 *mazeScale) & (sq.position.y-5 *mazeScale) <= brownCircle.position.y) {
-		//scene.add(l31);
-		//scene.remove(l28);
 		door = scene.getObjectByName("line30");
 		door.rotation.z = Math.PI/2;
 		door.translateX(-14 *mazeScale);
 		door.translateY(14 *mazeScale);
 
 		brownCircle.position.x = brownCircle.position.x-60 *mazeScale;
-
 		brownCircle.visible=false;
+		
 		document.addEventListener("keydown", function(e){ //press spacebar to restart the game
 			if(e.keyCode == 32) {
-    			//window.location.reload();
 				resetPositions(mazeObjectsThatChanges,xCoordsToReset,yCoordsToReset);
 				resetCircles(circlesToReset, xCircleCoordsToReset, yCircleCoordsToReset);
 
 			}
 		});
 	} else if(prawnCircle.position.x<= (sq.position.x+5 *mazeScale) & (sq.position.x-5 *mazeScale)<= prawnCircle.position.x & prawnCircle.position.y <= (sq.position.y+5 *mazeScale) & (sq.position.y-5 *mazeScale) <= prawnCircle.position.y) {
-		//scene.add(l33);
-		//scene.remove(l28);
 		door = scene.getObjectByName("line28");
 		door.rotation.z = Math.PI/2;
 		door.translateX(13 *mazeScale);
@@ -889,7 +643,6 @@ function unlockDoors() {
 		prawnCircle.visible=false;
 		document.addEventListener("keydown", function(e){ //press spacebar to restart the game
 			if(e.keyCode==32) {
-				//window.location.reload();
 				resetPositions(mazeObjectsThatChanges,xCoordsToReset,yCoordsToReset);
 				resetCircles(circlesToReset, xCircleCoordsToReset, yCircleCoordsToReset);
 
@@ -913,8 +666,6 @@ function collisionIsVerified(sqbb,mazeObjects) {
 		if(obj != null) {
 			tempbb = new THREE.Box3().setFromObject(obj);//;
 			if (sqbb.intersectsBox(tempbb) == true) {
-		//if(obj!=null) {
-			//if(sqbb.intersectsBox(obj)==true) {
 				verified = true;
 				break;
 			} else {
@@ -922,7 +673,6 @@ function collisionIsVerified(sqbb,mazeObjects) {
 			}
 		}
 	}
-	//console.log(verified);
 	return verified;
 }	
 		
